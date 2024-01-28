@@ -1,0 +1,37 @@
+-r base.txt
+
+# A
+# B
+# C
+coverage==7.4.0
+
+# D
+django_extensions==3.2.3
+
+# E
+# F
+# G
+# H
+# I
+# J
+# K
+# L
+# M
+# N
+# O
+# P
+pylint==3.0.3
+pylint_django==2.5.5
+
+# Q
+# R
+ruff==0.1.14
+
+# S
+# T
+# U
+# V
+# W
+# X
+# Y
+# Z

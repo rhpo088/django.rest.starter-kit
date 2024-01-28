@@ -1,0 +1,35 @@
+#
+# Requirements of Django REST Starter Kit
+#
+
+# A
+# B
+# C
+# D
+Django==5.0.1
+djangorestframework==3.14.0
+
+# E
+# F
+# G
+# H
+# I
+# J
+# K
+# L
+# M
+# N
+# O
+# P
+psycopg2==2.9.9
+
+# Q
+# R
+# S
+# T
+# U
+# V
+# W
+# X
+# Y
+# Z

@@ -1,0 +1,37 @@
+version: "3.0"
+
+services:
+
+  rest-api:
+    container_name: rest-api
+    image: django.rest.starter-kit/rest-api:development.latest
+    depends_on:
+      - rest-database
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./../src/restapi:/home/${RA_USER}/restapi
+      - ./../src/pyproject.toml:/home/${RA_USER}/pyproject.toml
+    ports:
+      - ${RA_PORT-8000}:80
+    env_file: ./../.env
+    networks:
+      - rest-api-net
+
+  rest-database:
+    container_name: rest-database
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: ra-user
+      POSTGRES_DB: development
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - rest-database-vol:/var/lib/postgresql/data
+    networks:
+      - rest-api-net
+
+volumes:
+  rest-database-vol:
+
+networks:
+  rest-api-net:
