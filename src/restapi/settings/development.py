@@ -4,10 +4,11 @@ Django settings for restapi project.
 These settings are used in development mode.
 """
 
-from restapi.settings.base import *  # noqa: F403
+# pylint: disable=wildcard-import,unused-wildcard-import
+from restapi.settings.base import *
 
-INSTALLED_APPS += [  # noqa: F405
+INSTALLED_APPS += [
     "django_extensions",
 ]
 
-ALLOWED_HOSTS.append("testserver")  # noqa: F405
+ALLOWED_HOSTS.append("testserver")

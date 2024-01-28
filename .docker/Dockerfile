@@ -30,6 +30,7 @@ FROM base as development
 
 COPY --chown=${RA_USER} ./src/.flake8 .
 COPY --chown=${RA_USER} ./src/.pylintrc .
+COPY --chown=${RA_USER} ./src/pyproject.toml .
 
 COPY --chown=${RA_USER} ./.docker/entrypoints/${RA_ENVIRONMENT}.sh /usr/bin/restapi.sh
 RUN chmod +x /usr/bin/restapi.sh

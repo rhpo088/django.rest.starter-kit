@@ -2,8 +2,6 @@
 
 # A
 # B
-black==23.12.1
-
 # C
 coverage==7.4.0
 
@@ -12,13 +10,9 @@ django_extensions==3.2.3
 
 # E
 # F
-flake8==7.0.0
-
 # G
 # H
 # I
-isort==5.13.2
-
 # J
 # K
 # L
@@ -27,10 +21,12 @@ isort==5.13.2
 # O
 # P
 pylint==3.0.3
-pylint-django==2.5.5
+pylint_django==2.5.5
 
 # Q
 # R
+ruff==0.1.14
+
 # S
 # T
 # U

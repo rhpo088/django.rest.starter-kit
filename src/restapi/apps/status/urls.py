@@ -1,3 +1,7 @@
+"""
+The root URLconf of Status API.
+"""
+
 from django.urls import path
 
 from restapi.apps.status.apps import StatusAppConfig

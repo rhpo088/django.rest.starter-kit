@@ -22,7 +22,12 @@ urlpatterns = [
         "api/",
         include(
             (
-                [path("status", include("restapi.apps.status.urls", namespace="status"))],
+                [
+                    path(
+                        "status",
+                        include("restapi.apps.status.urls", namespace="status"),
+                    )
+                ],
                 "restapi",
             ),
             namespace="restapi",

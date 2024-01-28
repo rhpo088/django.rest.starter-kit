@@ -50,9 +50,9 @@ help:
 	@echo ''
 	@echo '4. pre-commit'
 	@echo ''
-	@echo '   Execute the pre-commit source code checks for API: isort, black, flake8 and pylint'
+	@echo '   Execute the pre-commit source code checks for API use ruff linter.'
 	@echo ''
-	@echo '   Usage:  make pre-commit-api'
+	@echo '   Usage:  make pre-commit'
 	@echo ''
 	@echo '5. test'
 	@echo ''
@@ -89,14 +89,9 @@ prune:
 
 .PHONY: pre-commit
 pre-commit:
+	docker exec -it ${a-api-container} bash -ic 'python3 -m ruff format restapi/'
 	docker exec -it ${a-api-container} bash -ic \
-		'python3 -m isort --profile black $$(find restapi -name "*.py")'
-	docker exec -it ${a-api-container} bash -ic \
-		'python3 -m black  --target-version=py311 --line-length=100 $$(find restapi -name "*.py")'
-	docker exec -it ${a-api-container} bash -ic \
-		'python3 -m flake8 ./restapi'
-	docker exec -it ${a-api-container} bash -ic \
-		'python3 -m pylint --load-plugins pylint_django --django-settings-module=restapi.settings ./restapi'
+	  'python3 -m pylint --load-plugins pylint_django --django-settings-module=restapi.settings ./restapi'
 
 .PHONY: test
 test:

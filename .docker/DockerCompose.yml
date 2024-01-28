@@ -11,6 +11,7 @@ services:
     tty: true
     volumes:
       - ./../src/restapi:/home/${RA_USER}/restapi
+      - ./../src/pyproject.toml:/home/${RA_USER}/pyproject.toml
     ports:
       - ${RA_PORT-8000}:80
     env_file: ./../.env
