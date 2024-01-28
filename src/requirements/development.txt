@@ -1,0 +1,41 @@
+-r base.txt
+
+# A
+# B
+black==23.12.1
+
+# C
+coverage==7.4.0
+
+# D
+django_extensions==3.2.3
+
+# E
+# F
+flake8==7.0.0
+
+# G
+# H
+# I
+isort==5.13.2
+
+# J
+# K
+# L
+# M
+# N
+# O
+# P
+pylint==3.0.3
+pylint-django==2.5.5
+
+# Q
+# R
+# S
+# T
+# U
+# V
+# W
+# X
+# Y
+# Z
