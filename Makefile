@@ -48,11 +48,25 @@ help:
 	@echo ''
 	@echo '   Usage:  make prune'
 	@echo ''
-	@echo '9. pre-commit'
+	@echo '4. pre-commit'
 	@echo ''
 	@echo '   Execute the pre-commit source code checks for API: isort, black, flake8 and pylint'
 	@echo ''
 	@echo '   Usage:  make pre-commit-api'
+	@echo ''
+	@echo '5. test'
+	@echo ''
+	@echo '   Run the unit tests.'
+	@echo ''
+	@echo '   Usage:  make test'
+	@echo ''
+	@echo ''
+	@echo '6. test-coverage'
+	@echo ''
+	@echo '   Run the unit tests and calculate the total coverage.'
+	@echo ''
+	@echo '   Usage:  make test-coverage'
+	@echo ''
 	@echo '---'
 
 .PHONY: development-up
@@ -76,11 +90,22 @@ prune:
 .PHONY: pre-commit
 pre-commit:
 	docker exec -it ${a-api-container} bash -ic \
-	  'python3 -m isort --profile black $$(find restapi -name "*.py")'
+		'python3 -m isort --profile black $$(find restapi -name "*.py")'
 	docker exec -it ${a-api-container} bash -ic \
-	  'python3 -m black  --target-version=py311 --line-length=100 $$(find restapi -name "*.py")'
+		'python3 -m black  --target-version=py311 --line-length=100 $$(find restapi -name "*.py")'
 	docker exec -it ${a-api-container} bash -ic \
-	  'python3 -m flake8 ./restapi'
+		'python3 -m flake8 ./restapi'
 	docker exec -it ${a-api-container} bash -ic \
-	  'python3 -m pylint --load-plugins pylint_django --django-settings-module=restapi.settings ./restapi'
+		'python3 -m pylint --load-plugins pylint_django --django-settings-module=restapi.settings ./restapi'
 
+.PHONY: test
+test:
+	docker exec -it ${a-api-container} bash -ic \
+		'python3 manage.py test --verbosity=2 --force-color'
+
+.PHONY: test-coverage
+test-coverage:
+	docker exec -it ${a-api-container} bash -ic \
+		'python3 -m coverage run --source=restapi --omit=restapi/settings/*,restapi/asgi.py,restapi/wsgi.py manage.py test'
+	docker exec -it ${a-api-container} bash -ic \
+		'python3 -m coverage report --show-missing --fail-under=95'

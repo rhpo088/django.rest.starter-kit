@@ -12,7 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 
 os.environ.setdefault(
-    "DJANGO_SETTINGS_MODULE", "restapi.settings.{}".format(os.environ.get("RA_ENVIRONMENT"))
+    "DJANGO_SETTINGS_MODULE", f"restapi.settings.{os.environ.get('RA_ENVIRONMENT')}"
 )
 
 application = get_asgi_application()
